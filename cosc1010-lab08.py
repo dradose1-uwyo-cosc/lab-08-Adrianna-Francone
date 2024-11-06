@@ -88,7 +88,7 @@ while True:
         m = int_or_float(m)
         if m == bad:
             print("Please enter valid values")
-            break
+            continue
     b = input("Please input integar value for b or exit to end program: ")
     if b.upper()==exit.upper():
         break
@@ -96,7 +96,7 @@ while True:
         b = int_or_float(b)
         if b == bad:
             print("Please enter valid values")
-            break
+            continue
     x_lower = input("Please input integar value for x_lower or exit to end program: ")
     if x_lower.upper()==exit.upper():
         break
@@ -104,7 +104,7 @@ while True:
         x_lower = int_or_float(x_lower)
         if x_lower == bad:
             print("Please enter valid values")
-            break
+            continue
     x_upper = input("Please input integar value for upper bound for x or exit to end program: ")
     if x_upper.upper()==exit.upper():
         break
@@ -112,7 +112,7 @@ while True:
         x_upper = int_or_float(x_upper)
         if x_upper == bad:
             print("Please enter valid values")
-            break
+            continue
     if x_upper > x_lower:
         y_values = point_slope_eq(m,b,x_upper,x_lower)
     else: 
@@ -134,7 +134,6 @@ print("*" * 75)
 def sq_root(a,b,c):
     quad_input = (b**2)-(4*a*c)
     if quad_input < 0:
-        print("Null")
         return bad
     else:
         sqroot = (quad_input**(1/2))
@@ -143,7 +142,6 @@ def sq_root(a,b,c):
 def solve_quad(a,b,c):
     sqroot = sq_root(a,b,c)
     if sqroot == bad:
-        Print("Null")
         return bad
     else:
         x1 = (-b + sqroot)/(2*a)
@@ -159,7 +157,7 @@ while bad:
         a = int_or_float(a)
         if a == bad:
             print("Please enter valid values")
-            break
+            continue
     b = input("Please input integar value for b or exit to end program: ")
     if b.upper()==exit.upper():
         break
@@ -167,7 +165,7 @@ while bad:
         b = int_or_float(b)
         if b == bad:
             print("Please enter valid values")
-            break
+            continue
     c = input("Please input integar value for c or exit to end program: ")
     if c.upper()==exit.upper():
         break
@@ -175,7 +173,12 @@ while bad:
         c = int_or_float(c)
         if c == bad:
             print("Please enter valid values")
-            break
-    [x1,x2] = solve_quad(a,b,c)
-    print(f"First root is {x1}, second root is {x2}")
+            continue
+    x = solve_quad(a,b,c)
+    if x == bad:
+        print("Null")
+        print("Please enter valid values")
+        continue
+    else:
+        print(f"First root is {x[0]}, second root is {x[1]}")
 
